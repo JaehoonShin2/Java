@@ -1,34 +1,45 @@
-package com.github.BAEKJUN;
+package com;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Num2231 {
-        public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // N 은 분해합이다.
+        int N = Integer.parseInt(br.readLine());
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Num2231 n2 = new Num2231();
+        n2.calculator(N);
 
-            int N = Integer.parseInt(br.readLine());
 
-            int result = 0;
+    }
+    public void calculator(int N){
 
-            for(int i = 0; i < N; i++) {
-                int number = i; // 0부터 N-1까지 순서대로 증가할 변수
-                int sum = 0;	// 자리수의 총합
+        // 분해합의 N-1의 역순으로 갈 것이다.
+        int Number = N;
+        // 최종적으로 출력하기 위한 값
+        int reseult = 0;
 
-                while(number != 0) {
-                    sum += number % 10;	// 각 자릿수 더하기
-                    number /= 10; // 10으로 나누어가면서 최종적으로 자리수를 찾아가는 과정
-                }
+        // while 로 반복구문으로 돌리자.
+        while (Number > 0) {
+            Number--;
+            // hap은 number-1의 값 = 생성자
+            int hap = Number;
+            // temp는 자리수대로 끊어가기 위한 임의의 값
+            int temp = Number;
 
-                if(sum + i == N) { // sum(자리수합) + i(변수)
-                    result = i;
-                    break; // 가장 작은 수를 찾는 것이기 때문에 순서대로 올라가다가 발견하면 stop.
-                }
+            while (temp != 0) { // temp가 0이라는 것은 10으로 나누었을 때 더이상 자리수가 없다는 것
+                hap += temp % 10;
+                temp /= 10;
             }
-            System.out.println(result);
+
+            if (hap == N) {
+                reseult = Number;
+            }
+
         }
+        System.out.println(reseult);
+    }
 }
-
-
