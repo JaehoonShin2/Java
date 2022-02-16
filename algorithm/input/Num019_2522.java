@@ -9,8 +9,9 @@ public class Num019_2522 {
 
     public static void main(String[] args) throws IOException {
 
-        star1();
+      star1();
     }
+
 
     static void star1() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
