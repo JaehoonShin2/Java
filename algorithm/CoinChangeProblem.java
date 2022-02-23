@@ -24,20 +24,18 @@ public class CoinChangeProblem {
 
                 if (coin[l] <= i) { // coin[0] 은 1원. 만약 1이 i값보다 작다면 행의 진행
                                 // 반면 coin[1] 이 5원인데 i가 3이리면 다움 i가 반복됨
-
+                
                     if ( dp[  i - coin[l]  ] < 0) {
-                        // dp [ i - coin[l] 의 값이 -1이라면, 즉 주어진 코인이
-                        // 2, 5, 11원일 경우 주어진 n이 8이라면, 경우의 수는 나오지 않는다.
-
-                        if (dp[i] < 0) {
-                            dp[i] = dp[i - coin[l] ] + 1;
-                        }
-
-                        else if (dp[i - coin[l]] + 1 < dp[i]) {
-                            dp[i] = dp[i - coin[l]] + 1;
-                        }
+                            // dp [ i - coin[l] 의 값이 -1이라면, 즉 주어진 코인이
+                            // 2, 5, 11원일 경우 주어진 n이 8이라면, 경우의 수는 나오지 않는다.
+                        continue;
                     }
-
+                    if (dp[i] < 0) {
+                        dp[i] = dp[i - coin[l] ] + 1;
+                    }
+                    else if (dp[i - coin[l]] + 1 < dp[i]) {
+                        dp[i] = dp[i - coin[l]] + 1;
+                    }
                 }
             }
         }
